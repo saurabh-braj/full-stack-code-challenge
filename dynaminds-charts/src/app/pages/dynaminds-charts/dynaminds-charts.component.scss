@@ -3,3 +3,25 @@
     color: green;
     font-style: italic;
 }
+
+.main-app-container {
+    display: flex;
+    @media screen and (max-width: 800px) {
+       flex-direction: column;
+    }
+}
+
+.form-container {
+    width: 400px;
+
+    @media screen and (max-width: 800px) {
+        width: 100%;
+    }
+}
+
+.graph-container {
+    width: calc(100% - 400px);
+    @media screen and (max-width: 800px) {
+        width: 100%;
+    }
+}

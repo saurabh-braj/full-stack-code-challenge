@@ -1,14 +1,14 @@
-<mat-card class="mt-3 d-flex">
-    <form class="col-6" [formGroup]="chartForm">
+<mat-card class="mt-3 main-app-container">
+    <form class="form-container" [formGroup]="chartForm">
         <div class="note-text">Note: Please fill all the form values to generate graph</div>
         <div class="mt-3">
             <div class="d-flex">
-                <div class="fw-bold col-4">Select Monthly Revenue</div>
-                <div class="fw-bold col-4 ms-5">Select Color</div>
+                <div class="fw-bold col-5">Select Monthly Revenue</div>
+                <div class="fw-bold col-5 ms-5">Select Color</div>
             </div>
             <div>
                 <div class="mt-3 d-flex" *ngFor="let option of chartsConfig | keyvalue">
-                    <div class="col-4">
+                    <div class="col-5">
                         <app-dynaminds-input
                             [rootForm]="chartForm"
                             [chartFormGroupName]="option.value.dataGroupName"
@@ -16,7 +16,7 @@
                             [label]="option.value.label">
                         </app-dynaminds-input>
                     </div>
-                    <div class="col-4 ms-5">
+                    <div class="col-5 ms-5">
                         <app-dynaminds-select label="Color"
                             [chartFormGroupName]="option.value.colorGroupName"
                             [rootForm]="chartForm"
@@ -30,13 +30,13 @@
         <div class="mt-4">
             <div class="fw-bold">Graph Type</div>
             <div class="mt-2 d-flex align-items-center" *ngFor="let option of graphTypesOptions">
-                <input type="radio" name="graphType" formControlName="graphType" [value]="option">
-                <label class="ms-3" style="text-transform: capitalize;">{{ option }}</label>
+                <input type="radio" for="graphTypeLabel" name="graphType" formControlName="graphType" [value]="option">
+                <label id="graphTypeLabel" class="ms-3" style="text-transform: capitalize;">{{ option }}</label>
             </div>
         </div>
     </form>
 
-    <div class="col-6">
+    <div class="graph-container">
         <mat-card class="m-4">
             <div *ngIf="chartForm.get('graphType')?.value === 'pie' && data.length && dataColor.length">
                 <app-pie-chart [data]="data" [dataColor]="dataColor"></app-pie-chart>
